@@ -1,0 +1,388 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html, body {
+  height:100%;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color:#fff;
+  color:#fff;
+  font-family:'Roboto';
+}
+
+input, button, .button, .dropzone {
+  outline:0;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:3px;
+  padding:0.5rem;
+
+  box-sizing:border-box;
+  width:100%;
+  display:block;
+  margin:0.25rem 0;
+}
+
+.button {
+  border-bottom-width:3px;
+}
+
+input[type=radio] {
+  display:inline;
+}
+
+input[type=radio]:checked + label {
+  background-color:#9CE2AE;
+  border-color:#57B26E;
+}
+
+.half {
+  box-sizing:border-box;
+  display:inline-block;
+  width:47.5%;
+}
+
+.half:first-of-type {
+  float:left;
+}
+
+.half:last-of-type {
+  float:right;
+}
+
+.dropzone, .button {
+  cursor:pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button, button, .dropzone {
+  color:#333;
+}
+
+input[type=file] {
+  background:transparent;
+  border:none;
+  width:auto;
+  display:inline-block;
+}
+
+canvas {
+  display:none;
+}
+
+section {
+  width:400px;
+  text-align:center;
+  background-color:#2d72d9;
+  padding:2rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem 0 #ddd;
+  position:fixed;
+  top:50%;
+  left:50%;
+
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+ul {
+  padding:0;
+  list-style-type:none;
+  text-align:left;
+  text-align:center;
+  line-height:1.75;
+}
+
+.color-box {
+  display:inline-block;
+  margin-right:0.2rem;
+  width:1rem;
+  height:1rem;
+  position:relative;
+  top:0.15rem;
+}
+
+.offscreen {
+  opacity:0;
+  top:0%;
+  z-index:-100;
+}
+
+section {
+  position:absolute;
+  left:50%;
+  opacity:1;
+  z-index:0;
+
+  -webkit-transition:all 0.5s ease-in-out;
+  transition:all 0.5s ease-in-out;
+}
+
+.previous {
+  background-color:transparent;
+  border-color:#fff;
+  border-width:1px;
+  color:#fff;
+}
+
+.dz-thumbnail {
+  width:100px;
+  border:1px solid #ddd;
+  margin:1rem;
+}
+
+a {
+  color:#47E870;
+  text-decoration:none;
+}
+
+a:hover {
+  color:#fff;
+}
+
+.modal {
+  background-color:#fff;
+  position:fixed;
+  top:50%;
+  left:50%;
+
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  z-index:20;
+
+  padding:3rem;
+  color:#333;
+}
+
+.modal-close {
+  color:#999;
+}
+
+.modal-overlay {
+  content:'';
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color:rgba(50,50,50,0.5);
+  z-index:10;
+}
+
+p {
+  text-align:left;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
