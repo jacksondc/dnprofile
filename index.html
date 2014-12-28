@@ -46,11 +46,10 @@
 
         <section id="step3" class="offscreen">
             <h2>2. Choose an image</h2>
-            <p>You'll need a <span id="dimensions">20x20</span> px image. You can use whatever colors you want,
-              but only these will show up in your profile: </p>
+            <p>Your image will be resized to <span id="dimensions">20 by 20</span> px, and all colors will be approximated using these:</p>
             <ul id="colorsList">
             </ul>
-            <p>If you use other colors, they'll be changed to the closest one in the list above.</p>
+            <p>In other words, you can use other dimensions or colors, but your image might not turn out as you intended.</p>
             <form class="dropzone" action="/" id="image">
               <div class="previews hidden"></div>
             </form>
@@ -61,12 +60,11 @@
         <section id="step4" class="offscreen">
           <h2>3. Update your profile</h2>
           <p>Again on the profile edit page, paste this into the console:</p>
-          <input type="text" id="writeCode" placeholder="Oops! Go back a step."></input>
+          <input type="text" id="writeCode" placeholder="Oops! Something went wrong. Try refreshing?"></input>
           <p>That's it!</p>
           <button class="previous" id="previousStep4">Back</button>
         </section>
 
-        <script src="js/vendor/picomodal.min.js"></script>
         <script src="js/vendor/dropzone.js"></script>
         <script src="js/main.js"></script>
 

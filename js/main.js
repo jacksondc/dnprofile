@@ -43,54 +43,53 @@ function drawImage(imageObj) {
     var canvas = document.getElementById('myCanvas');
     var context = canvas.getContext('2d');
 
-    var imageWidth = imageObj.width;
-    var imageHeight = imageObj.height;
+    var imageWidth;
+    var imageHeight;
 
-    context.drawImage(imageObj, 0, 0);
+    if(isProfile) {
+      imageWidth = 20;
+      imageHeight = 20;
+    } else {
+      imageWidth = 62;
+      imageHeight = 29;
+    }
+
+    context.drawImage(imageObj, 0, 0, imageWidth, imageHeight);
 
     var imageData = context.getImageData(0,0, imageWidth, imageHeight);
     var data = imageData.data;
 
     image = [];
 
-    var pixels = data.length / 4;
-    if((isProfile && pixels !== 400) || (!isProfile && pixels !== 1798)) {
-      showModal('looks like your image is the wrong size! your image is ' + imageWidth + ' by ' + imageHeight + ' pixels.');
-    } else {
-      //move to next screen
-      document.getElementById('step3').className = 'offscreen';
-      document.getElementById('step4').className = '';
+    // iterate over all pixels
+    for(var i = 0; i < data.length; i += 4) {
+        var red = data[i];
+        var green = data[i + 1];
+        var blue = data[i + 2];
+        var alpha = data[i + 3];
 
-      // iterate over all pixels
-      for(var i = 0; i < data.length; i += 4) {
-          var red = data[i];
-          var green = data[i + 1];
-          var blue = data[i + 2];
-          var alpha = data[i + 3];
-
-          matchFound = false;
-          differences = [];
-          for(var e = 0; e < colors.length; e++) {
-            diffR = Math.abs(colors[e][0] - red);
-            diffG = Math.abs(colors[e][1] - green);
-            diffB = Math.abs(colors[e][2] - blue);
-            differences.push(diffR + diffG + diffB);
+        matchFound = false;
+        differences = [];
+        for(var e = 0; e < colors.length; e++) {
+          diffR = Math.abs(colors[e][0] - red);
+          diffG = Math.abs(colors[e][1] - green);
+          diffB = Math.abs(colors[e][2] - blue);
+          differences.push(diffR + diffG + diffB);
+        }
+        min = 256*3;
+        minIndex = -1;
+        for(var e = 0; e < differences.length; e++) {
+          if(differences[e] < min) {
+            min = differences[e];
+            minIndex = e;
           }
-          min = 256*3;
-          minIndex = -1;
-          for(var e = 0; e < differences.length; e++) {
-            if(differences[e] < min) {
-              min = differences[e];
-              minIndex = e;
-            }
-          }
-          image.push('0123456789abcdefghijklmnopqrstuvwxyz'.charAt(minIndex));
-      }
-
-      imageString = image.join('');
-
-      document.getElementById('writeCode').value = 'var newImage="' + imageString + '",cells=$("' + profileOrHeaderSelector + ' .Cell");cells.each(function(e){for(;"rgb(255, 255, 255)"!=this.style.backgroundColor;)$(this).trigger("mousedown").trigger("mouseup");for(var r=0;r<newImage[e];r++)$(this).trigger("mousedown").trigger("mouseup")});';
+        }
+        image.push('0123456789abcdefghijklmnopqrstuvwxyz'.charAt(minIndex));
     }
+
+    imageString = image.join('');
+
+    document.getElementById('writeCode').value = 'var newImage="' + imageString + '",cells=$("' + profileOrHeaderSelector + ' .Cell");cells.each(function(e){for(;"rgb(255, 255, 255)"!=this.style.backgroundColor;)$(this).trigger("mousedown").trigger("mouseup");for(var r=0;r<newImage[e];r++)$(this).trigger("mousedown").trigger("mouseup")});';
 }
 
 document.getElementById('submitStep1').addEventListener('click', function() {
@@ -98,11 +97,11 @@ document.getElementById('submitStep1').addEventListener('click', function() {
   if(document.getElementById('profile').checked) {
     isProfile = true;
     profileOrHeaderSelector = '#ProfilePicture';
-    document.getElementById('dimensions').innerHTML = '20x20';
+    document.getElementById('dimensions').innerHTML = '20 by 20';
   } else if(document.getElementById('cover').checked) {
     isProfile = false;
     profileOrHeaderSelector = '#CoverPicture';
-    document.getElementById('dimensions').innerHTML = '62x29';
+    document.getElementById('dimensions').innerHTML = '62 by 29';
   } else {
     showModal('Pick something!');
     somethingChecked = false;
@@ -152,7 +151,9 @@ document.getElementById('submitStep3').addEventListener('click', function() {
     showModal('That doesn\'t look like an image.');
   }
 
-  //we will move on once we draw the image
+  //move to next screen
+  document.getElementById('step3').className = 'offscreen';
+  document.getElementById('step4').className = '';
 });
 
 document.getElementById('previousStep2').addEventListener('click', function() {
