@@ -138,6 +138,7 @@ function showColors() {
 }
 
 document.getElementById('submitStep3').addEventListener('click', function() {
+  imageFile = document.getElementById('image').files[0];
   if ( imageFile ) {
       var fr = new FileReader();
       fr.onload = function(e) {
