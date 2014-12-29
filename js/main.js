@@ -7,6 +7,7 @@ Dropzone.options.image = {
   acceptedFiles: 'image/*',
   dictDefaultMessage: 'Upload an image',
   dictRemoveFile: 'Remove',
+  autoProcessQueue: false,
   dictMaxFilesExceeded: '',
   maxFiles: 1,
   thumbnailHeight: "100",
@@ -16,7 +17,7 @@ Dropzone.options.image = {
           '</div>' +
           '<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>' +
         '</div>',
-  success: function(file) {
+  complete: function(file) {
     imageFile = file;
   },
   init: function() {
@@ -154,6 +155,7 @@ document.getElementById('submitStep3').addEventListener('click', function() {
   } else {
     showModal('That doesn\'t look like an image.');
   }
+  console.log(imageFile);
 });
 
 document.getElementById('previousStep2').addEventListener('click', function() {
