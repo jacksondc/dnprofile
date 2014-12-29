@@ -7,7 +7,6 @@ Dropzone.options.image = {
   acceptedFiles: 'image/*',
   dictDefaultMessage: 'Upload an image',
   dictRemoveFile: 'Remove',
-  autoProcessQueue: false,
   dictMaxFilesExceeded: '',
   maxFiles: 1,
   thumbnailHeight: "100",
@@ -17,14 +16,18 @@ Dropzone.options.image = {
           '</div>' +
           '<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>' +
         '</div>',
-  complete: function(file) {
-    imageFile = file;
-  },
   init: function() {
-    this.on("addedfile", function() {
+    var context = this;
+    context.on("addedfile", function() {
       if (this.files[1]!=null){
         this.removeFile(this.files[0]);
       }
+    });
+    context.on('sending', function(file) {
+      imageFile = file;
+      //don't remove because that will
+      //disable the image preview
+      //context.removeFile(file);
     });
   }
 };
@@ -138,7 +141,7 @@ function showColors() {
 }
 
 document.getElementById('submitStep3').addEventListener('click', function() {
-  imageFile = document.getElementById('image').files[0];
+  //imageFile = document.getElementById('image').files[0];
   if ( imageFile ) {
       var fr = new FileReader();
       fr.onload = function(e) {
