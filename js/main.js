@@ -113,7 +113,7 @@ document.getElementById('submitStep1').addEventListener('click', function() {
 });
 
 document.getElementById('submitStep2').addEventListener('click', function() {
-  var rawColors = document.getElementById('colorsCodeOutput').value;
+  var rawColors = document.getElementById('colorsCodeOutput').value.trim();
   if(/^((\d+,){2}\d+;?)+$/.test(rawColors)) {
     colors = rawColors.split(';');
     for(var i = 0; i < colors.length; i++) {
