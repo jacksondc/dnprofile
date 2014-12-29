@@ -147,13 +147,13 @@ document.getElementById('submitStep3').addEventListener('click', function() {
          img.src = e.target.result;
       };
       fr.readAsDataURL( imageFile );
+
+      //move to next screen
+      document.getElementById('step3').className = 'offscreen';
+      document.getElementById('step4').className = '';
   } else {
     showModal('That doesn\'t look like an image.');
   }
-
-  //move to next screen
-  document.getElementById('step3').className = 'offscreen';
-  document.getElementById('step4').className = '';
 });
 
 document.getElementById('previousStep2').addEventListener('click', function() {
