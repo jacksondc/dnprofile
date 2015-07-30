@@ -1,5 +1,5 @@
 //warn first
-showModal('Notice: the editor doesn't work anymore as of changes to DN (see https://www.designernews.co/stories/53355-dn-20-status-report-markdown-preview-pixel-picker-and-more) on July 29, 2015. Hopefully I'll fix it soon.');
+showModal("Notice: the editor doesn't work anymore as of changes to DN (see https://www.designernews.co/stories/53355-dn-20-status-report-markdown-preview-pixel-picker-and-more) on July 29, 2015. Hopefully I'll fix it soon.");
 
 imageFile = null;
 isProfile = null;
